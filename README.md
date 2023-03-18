@@ -3,6 +3,7 @@
 ### Warning
 If you are attempting to run this code yourself..
     - You might have to change the seasons to watch the animes you want
+    
     - Credentials will not work for anyone else running this, change login_with_credentials("Crunchyroll Email", "Crunchyroll Password")
 
 ### How to Find Your Show
