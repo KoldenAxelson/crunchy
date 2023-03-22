@@ -14,38 +14,49 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GEXH3WKK0").await?;
+    // let a = crunchyroll.media_from_id("GKEH2G428").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
+    let mut shows: Vec<Vec<String>> = Vec::new();
+
     // "G6NQ5DWZ6" My Hero Academia
-    get_info(crunchyroll.clone(), "GRVNC2JD0", "My Hero").await?;
+    shows.push(get_info(crunchyroll.clone(), "GRVNC2JD0", "My Hero").await?);
 
     // "G4PH0WEKE" BLUELOCK
-    get_info(crunchyroll.clone(), "G6GGCV0QX", "").await?;
+    shows.push(get_info(crunchyroll.clone(), "G6GGCV0QX", "").await?);
 
     // "GRMG8ZQZR" One Piece
-    get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?;
+    shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
     // "GEXH3WKK0" Vinland Sage
-    get_info(crunchyroll.clone(), "G6K5CN5QV", "Vinland Saga").await?;
+    shows.push(get_info(crunchyroll.clone(), "G6K5CN5QV", "Vinland Saga").await?);
 
     // "GQWH0MP94" Reborn to Master the Blade: From Hero-King to Extraordinary Squire
-    get_info(crunchyroll.clone(), "GR09CX5QG", "Reborn Sword").await?;
+    shows.push(get_info(crunchyroll.clone(), "GR09CX5QG", "Reborn Sword").await?);
 
     // "GW4HM75NP" Ice Guy and his Cool Female Colleague
-    get_info(crunchyroll.clone(), "GY9PC21VE", "Ice Guy").await?;
+    shows.push(get_info(crunchyroll.clone(), "GY9PC21VE", "Ice Guy").await?);
 
     // "G0XHWM5Q4" Tomo-chan is a Girl!
-    get_info(crunchyroll.clone(), "G619CPWZZ", "Tomo is a Girl").await?;
+    shows.push(get_info(crunchyroll.clone(), "G619CPWZZ", "Tomo is a Girl").await?);
 
     // "GG5H5X3DE" Buddy Daddies
-    get_info(crunchyroll.clone(), "G6DQCGP0X", "").await?;
+    shows.push(get_info(crunchyroll.clone(), "G6DQCGP0X", "").await?);
+
+    // "GR09CX545" BOFURI
+    shows.push(get_info(crunchyroll.clone(), "GR09CX545", "BOFURI").await?);
+
+    shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
+
+    for show in shows {
+        println!("{}{}{}",show[2],show[1],"\x1b[0m");
+    }
 
     Ok(())
 }
 
-async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<(), Box<dyn std::error::Error>> {
+async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let season: Media<Season> = cr.media_from_id(season_id).await?;
     let episodes = season.episodes().await?;
     let episode: &Media<Episode> = &episodes[episodes.len()-1];
@@ -71,27 +82,27 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<(
 
     info_string.push_str(&format!("{:?}",episode.title));
 
-    match time / 86_400_000 {
-        0 => print!("\x1b[38;5;2m"),    // Green
-        1 => print!("\x1b[38;5;2m"),    // Green
-        2 => print!("\x1b[38;5;3m"),    // Yellow
-        3 => print!("\x1b[38;5;3m"),    // Yellow
-        4 => print!("\x1b[38;5;15m"),   // White
-        5 => print!("\x1b[38;5;15m"),   // White
-        6 => print!("\x1b[38;5;15m"),   // White
-        7 => print!("\x1b[38;5;14m"),   // Cyan
-        8 => print!("\x1b[38;5;240m"),  // Grey
-        9 => print!("\x1b[38;5;240m"),  // Grey
-        10=> print!("\x1b[38;5;240m"),  // Grey
-        11=> print!("\x1b[38;5;240m"),  // Grey
-        12=> print!("\x1b[38;5;240m"),  // Grey
-        13=> print!("\x1b[38;5;240m"),  // Grey
-        _ => print!("\x1b[38;5;160m"),  // Red
-    }
+    let color: String = match time / 86_400_000 {
+        0 => "\x1b[38;5;2m".to_string(),    // Green
+        1 => "\x1b[38;5;2m".to_string(),    // Green
+        2 => "\x1b[38;5;3m".to_string(),    // Yellow
+        3 => "\x1b[38;5;3m".to_string(),    // Yellow
+        4 => "\x1b[38;5;15m".to_string(),   // White
+        5 => "\x1b[38;5;15m".to_string(),   // White
+        6 => "\x1b[38;5;15m".to_string(),   // White
+        7 => "\x1b[38;5;14m".to_string(),   // Cyan
+        8 => "\x1b[38;5;240m".to_string(),  // Grey
+        9 => "\x1b[38;5;240m".to_string(),  // Grey
+        10=> "\x1b[38;5;240m".to_string(),  // Grey
+        11=> "\x1b[38;5;240m".to_string(),  // Grey
+        12=> "\x1b[38;5;240m".to_string(),  // Grey
+        13=> "\x1b[38;5;240m".to_string(),  // Grey
+        _ => "\x1b[38;5;160m".to_string(),  // Red
+    };
 
-    println!("{}", info_string);
+    let time_string: String = time.to_string();
 
-    print!("\x1b[0m");
+    let return_vec: Vec<String> = vec![time_string, info_string, color];
 
-    Ok(())
+    Ok(return_vec)
 }
