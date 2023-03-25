@@ -72,7 +72,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
 
     // Hours Until (Estimate)
     let remaining_time = (604_800_000 - time) / 3_600_000;
-    if remaining_time > 0 {
+    if remaining_time < 1_000 {
         info_string.push_str(&format!("{:0>3} ",remaining_time));
     } else {
         info_string.push_str("--- ");
