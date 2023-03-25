@@ -67,7 +67,16 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
 
     let mut info_string: String = "".to_string();
 
+    // Days Since
     info_string.push_str(&format!("{:0>2} ",time / 86_400_000));
+
+    // Hours Until (Estimate)
+    let remaining_time = (604_800_000 - time) / 3_600_000;
+    if remaining_time > 0 {
+        info_string.push_str(&format!("{:0>3} ",remaining_time));
+    } else {
+        info_string.push_str("--- ");
+    }
 
     if alt_title == "" {
         info_string.push_str(&format!("{: <15}",episode.metadata.series_title));
