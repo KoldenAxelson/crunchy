@@ -14,9 +14,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GKEH2G428").await?;
+    // let a = crunchyroll.media_from_id("GYEXQKJG6").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
+
+    // Waiting for new Dr. Stone Seasons
+    let stone_series = crunchyroll.media_from_id("GYEXQKJG6").await?;
+    let stone_seasons = stone_series.seasons().await?;
+    let stone_exclude = vec![
+        "GYX0C4DGQ","GR2PCVZN5","GY8VCP97W","GR9XGX1EY",
+        "GYP5K34DY","GRWEC3534","GYNQCJP5M","GY19CPW0X",
+        "GR79GK406","GRMGC355E","GR5VCDJ9X","G6WEC3NWJ",
+        "GRQ4CZ41Q","GYDQCG4JX","GR09CXQ33","GR49C7X9X",
+        "GYNQCJGKV","G6K5CNQ2M","G6MGC3WMP","GRVNC2JXM",
+        "GY3VC23P8"
+    ];
+    for stone_season in stone_seasons {
+        if !stone_exclude.contains(&stone_season.id.as_ref()) {
+            println!("\x1b[38;5;13m{:?} {:?}\x1b[0m", stone_season.id, stone_season.title);
+        }
+    }
 
     let mut shows: Vec<Vec<String>> = Vec::new();
 
