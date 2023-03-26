@@ -64,16 +64,26 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
 
     let mut info_string: String = "".to_string();
 
-    // Days Since
-    info_string.push_str(&format!("{:0>2} ",time / 86_400_000));
-
     // Time Until (Estimate)
-    let remaining_hours = (604_800_000 - time) / 3_600_000;
-    let remaining_mins = ((604_800_000 - time) % 3_600_000) / 60_000;
-    if remaining_hours < 1_000 {
-        info_string.push_str(&format!("{:0>3}:{:0>2} ",remaining_hours,remaining_mins));
+    let remaining_days  =  (604_800_000 - time) / 86_400_000;
+    let remaining_hours = ((604_800_000 - time) % 86_400_000) / 3_600_000;
+    let remaining_mins  = ((604_800_000 - time) %  3_600_000) /    60_000;
+    if remaining_days <= 7 {
+        info_string.push_str(
+            &format!("-{:0>2}:{:0>2}:{:0>2} ",
+                remaining_days,
+                remaining_hours,
+                remaining_mins));
     } else {
-        info_string.push_str("---:-- ");
+        let time_over     = time - 604_800_000;
+        let elapsed_days  = time_over / 86_400_000;
+        let elapsed_hours = time_over % 86_400_000 / 3_600_000;
+        let elapsed_mins  = time_over %  3_600_000 /    60_000;
+        info_string.push_str(
+            &format!("+{:0>2}:{:0>2}:{:0>2} ",
+                elapsed_days,
+                elapsed_hours,
+                elapsed_mins));
     }
 
     if alt_title == "" {
