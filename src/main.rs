@@ -20,9 +20,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut shows: Vec<Vec<String>> = Vec::new();
 
-    // "G6NQ5DWZ6" My Hero Academia
-    shows.push(get_info(crunchyroll.clone(), "GRVNC2JD0", "My Hero").await?);
-
     // "G4PH0WEKE" BLUELOCK
     shows.push(get_info(crunchyroll.clone(), "G6GGCV0QX", "").await?);
 
@@ -70,12 +67,13 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
     // Days Since
     info_string.push_str(&format!("{:0>2} ",time / 86_400_000));
 
-    // Hours Until (Estimate)
-    let remaining_time = (604_800_000 - time) / 3_600_000;
-    if remaining_time < 1_000 {
-        info_string.push_str(&format!("{:0>3} ",remaining_time));
+    // Time Until (Estimate)
+    let remaining_hours = (604_800_000 - time) / 3_600_000;
+    let remaining_mins = ((604_800_000 - time) % 3_600_000) / 60_000;
+    if remaining_hours < 1_000 {
+        info_string.push_str(&format!("{:0>3}:{:0>2} ",remaining_hours,remaining_mins));
     } else {
-        info_string.push_str("--- ");
+        info_string.push_str("---:-- ");
     }
 
     if alt_title == "" {
