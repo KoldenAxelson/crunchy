@@ -44,4 +44,7 @@
 
     Q: I would like something to be different, how do I leave you a suggestion?
     A: I believe in the power of prayer, and doing it yourself.
+
+    Q: What are all those \x1b codes?
+    A: They style terminal text, check out my other repo "what_the_hex" it's very helpful.
         
