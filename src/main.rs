@@ -13,6 +13,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .login_with_credentials(credentials[1], credentials[0])
         .await?;
 
+    // let token = Crunchyroll::session_token(&crunchyroll).await;
+    // println!("{:?}", token);
+
     // Get Seasons
     // let a = crunchyroll.media_from_id("GYEXQKJG6").await?;
     // let b = a.seasons().await?;
@@ -75,9 +78,9 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
     let episodes = season.episodes().await?;
     let episode: &Media<Episode> = &episodes[episodes.len()-1];
 
-    let now = std::time::SystemTime::now();
-    let sec = now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000;
-    let time = sec - (episode.metadata.premium_available_date.timestamp_millis() as u64);
+    let now       = std::time::SystemTime::now();
+    let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
+    let time: i64 = sec - (episode.metadata.premium_available_date.timestamp_millis() as i64);
 
     let mut info_string: String = "".to_string();
 
@@ -85,7 +88,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
     let remaining_days  =  (604_800_000 - time) / 86_400_000;
     let remaining_hours = ((604_800_000 - time) % 86_400_000) / 3_600_000;
     let remaining_mins  = ((604_800_000 - time) %  3_600_000) /    60_000;
-    if remaining_days <= 7 {
+    if remaining_days <= 7 && (604_800_000 - time) >= 0 {
         info_string.push_str(
             &format!("-{:0>2}:{:0>2}:{:0>2} ",
                 remaining_days,
