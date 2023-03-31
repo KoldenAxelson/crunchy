@@ -47,4 +47,10 @@
 
     Q: What are all those \x1b codes?
     A: They style terminal text, check out my other repo "what_the_hex" it's very helpful.
+
+### What's the next thing I'm working on
+    Currently trying to get the refresh token.
+    Right now each time I run the script it logs me in.
+    Lots of sign ins sign me out of my account. 
+    I don't like that. The refresh token should help.
         
