@@ -49,9 +49,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GEXH3WKK0" Vinland Sage
     shows.push(get_info(crunchyroll.clone(), "G6K5CN5QV", "Vinland Saga").await?);
 
-    // "GG5H5X3DE" Buddy Daddies
-    shows.push(get_info(crunchyroll.clone(), "G6DQCGP0X", "").await?);
-
     // "GR09CX545" BOFURI
     shows.push(get_info(crunchyroll.clone(), "GR09CX545", "BOFURI").await?);
 
