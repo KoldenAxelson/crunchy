@@ -30,7 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "GR79GK406","GRMGC355E","GR5VCDJ9X","G6WEC3NWJ",
         "GRQ4CZ41Q","GYDQCG4JX","GR09CXQ33","GR49C7X9X",
         "GYNQCJGKV","G6K5CNQ2M","G6MGC3WMP","GRVNC2JXM",
-        "GY3VC23P8"
+        "GY3VC23P8","G62PCV8G2"
     ];
     for stone_season in stone_seasons {
         if !stone_exclude.contains(&stone_season.id.as_ref()) {
@@ -39,6 +39,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let mut shows: Vec<Vec<String>> = Vec::new();
+
+    // "GYEXQKJG6" DR STONE
+    shows.push(get_info(crunchyroll.clone(), "G62PCV8G2", "DrStone(J)").await?);
 
     // "G4PH0WEKE" BLUELOCK
     shows.push(get_info(crunchyroll.clone(), "G6GGCV0QX", "").await?);
