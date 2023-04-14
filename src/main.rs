@@ -43,9 +43,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GYEXQKJG6" DR STONE
     shows.push(get_info(crunchyroll.clone(), "G62PCV8G2", "DrStone(J)").await?);
 
-    // "G4PH0WEKE" BLUELOCK
-    shows.push(get_info(crunchyroll.clone(), "G6GGCV0QX", "").await?);
-
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
