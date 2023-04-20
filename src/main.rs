@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GYEXQKJG6").await?;
+    // let a = crunchyroll.media_from_id("GNVHKNPQ7").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -39,6 +39,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let mut shows: Vec<Vec<String>> = Vec::new();
+
+    // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
+    shows.push(get_info(crunchyroll.clone(), "GY8VCP4J2", "Demon Slayer").await?);
+
+    // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
+    shows.push(get_info(crunchyroll.clone(), "GRWEC35JX", "MASHLE").await?);
+
+    // "GXJHM3PZW" A Galaxy Next Door
+    shows.push(get_info(crunchyroll.clone(), "G6P8CX19W", "Galaxy Door").await?);
+
+    // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
+    shows.push(get_info(crunchyroll.clone(), "GY75CDXMM", "Yamada Lv999").await?);
 
     // "GYEXQKJG6" DR STONE
     shows.push(get_info(crunchyroll.clone(), "G62PCV8G2", "DrStone(J)").await?);
