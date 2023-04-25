@@ -6,7 +6,7 @@ use std::fs;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Can't Post my Login Credentials bc of Degens on the Internet
-    let credentials_file = fs::read_to_string("/home/user/.lib/credentials")?;
+    let credentials_file = fs::read_to_string("/Library/.my_credentials")?;
     let credentials : Vec<&str> = credentials_file.rsplit(",").collect();
 
     let crunchyroll = Crunchyroll::builder()
