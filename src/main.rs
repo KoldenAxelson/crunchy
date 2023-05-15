@@ -45,7 +45,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GRWEC35JX", "MASHLE").await?);
 
     // "GXJHM3PZW" A Galaxy Next Door
-    shows.push(get_info(crunchyroll.clone(), "G6P8CX19W", "Galaxy Door").await?);
+    shows.push(get_info(crunchyroll.clone(), "GY5VCD9ZG", "Galaxy Door").await?);
 
     // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
     shows.push(get_info(crunchyroll.clone(), "GY75CDXMM", "Yamada Lv999").await?);
@@ -58,9 +58,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "GEXH3WKK0" Vinland Sage
     shows.push(get_info(crunchyroll.clone(), "G6K5CN5QV", "Vinland Saga").await?);
-
-    // "GR09CX545" BOFURI
-    shows.push(get_info(crunchyroll.clone(), "GR09CX545", "BOFURI").await?);
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
