@@ -101,6 +101,8 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
                 elapsed_mins));
     }
 
+    info_string.push_str(&format!("{} ",episode.metadata.premium_available_date.format("%a")));
+
     if alt_title == "" {
         info_string.push_str(&format!("{: <15}",episode.metadata.series_title));
     } else {
