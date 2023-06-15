@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GVDHX8Q71").await?;
+    // let a = crunchyroll.media_from_id("G0XHWM52V").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -34,6 +34,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // }
 
     let mut shows: Vec<Vec<String>> = Vec::new();
+
+    // "G0XHWM52V" Sacrificial Princess and the King of Beasts
+    shows.push(get_info(crunchyroll.clone(), "GYDQCGJ05", "Sacr. Princess").await?);
 
     // "GVDHX8Q71" Why Raeliana Ended Up at the Duke's Mansion
     shows.push(get_info(crunchyroll.clone(), "GR09CX528", "Why Raeliana").await?);
