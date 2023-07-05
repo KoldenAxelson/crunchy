@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GY5P48XEY").await?;
+    // let a = crunchyroll.media_from_id("G5PHNM7E2").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -38,20 +38,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G0XHWM52V" Sacrificial Princess and the King of Beasts
     shows.push(get_info(crunchyroll.clone(), "GYDQCGJ05", "Sacr. Princess").await?);
 
-    // "GVDHX8Q71" Why Raeliana Ended Up at the Duke's Mansion
-    shows.push(get_info(crunchyroll.clone(), "GR09CX528", "Why Raeliana").await?);
-
     // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
     shows.push(get_info(crunchyroll.clone(), "GRK5CN0P7", "Demon Slayer").await?);
 
-    // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
-    shows.push(get_info(crunchyroll.clone(), "GRWEC35JX", "MASHLE").await?);
-
     // "GXJHM3PZW" A Galaxy Next Door
     shows.push(get_info(crunchyroll.clone(), "GY5VCD9ZG", "Galaxy Door").await?);
-
-    // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
-    shows.push(get_info(crunchyroll.clone(), "GY75CDXMM", "Yamada Lv999").await?);
 
     // "GYEXQKJG6" DR STONE
     shows.push(get_info(crunchyroll.clone(), "G6E5CQ2QP", "Dr Stone").await?);
@@ -59,8 +50,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
+    // "G5PHNM7E2" Sugar Apple Fairy Tale
+    // Awaiting Season 2 release (English)
+
+    // "G4PH0WJQZ" Fate Strange Fake 
+    shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
+
+    // "G9VHN9P43" Horimiya
+    // Awaiting Season 2 release (English)
+
+    // "" Reign of the Seven Spellblades
+    // Awaiting release
+
+    // "" The Gene of AI
+    // Awaiting release
+
+    // Hiatus
     // "GEXH3WKK0" Vinland Sage
-    shows.push(get_info(crunchyroll.clone(), "G6K5CN5QV", "Vinland Saga").await?);
+    // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
+    // "GVDHX8Q71" Why Raeliana Ended Up at the Duke's Mansion
+    // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
