@@ -50,14 +50,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
-    // "G5PHNM7E2" Sugar Apple Fairy Tale
-    // Awaiting Season 2 release (English)
+    // "G5PHNM7E2" Sugar Apple Fairy Tale  
+    shows.push(get_info(crunchyroll.clone(), "G6E5CQ482", "Sugar Apple").await?);
 
     // "G4PH0WJQZ" Fate Strange Fake 
     shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
     // "G9VHN9P43" Horimiya
-    // Awaiting Season 2 release (English)
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQ244", "").await?);
+
 
     // "" Reign of the Seven Spellblades
     // Awaiting release
