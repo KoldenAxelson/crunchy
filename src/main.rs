@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G5PHNM7E2").await?;
+    // let a = crunchyroll.media_from_id("G9VHN9Q9N").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -41,9 +41,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
     shows.push(get_info(crunchyroll.clone(), "GRK5CN0P7", "Demon Slayer").await?);
 
-    // "GXJHM3PZW" A Galaxy Next Door
-    shows.push(get_info(crunchyroll.clone(), "GY5VCD9ZG", "Galaxy Door").await?);
-
     // "GYEXQKJG6" DR STONE
     shows.push(get_info(crunchyroll.clone(), "G6E5CQ2QP", "Dr Stone").await?);
 
@@ -53,18 +50,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G5PHNM7E2" Sugar Apple Fairy Tale  
     shows.push(get_info(crunchyroll.clone(), "G6E5CQ482", "Sugar Apple").await?);
 
+    // "G5PHNM7E2" Sugar Apple Fairy Tale  (JP)
+    shows.push(get_info(crunchyroll.clone(), "GR8VCP4QX", "Sugar Apple (J)").await?);
+
     // "G4PH0WJQZ" Fate Strange Fake 
     shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
-    // "G9VHN9P43" Horimiya
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQ244", "").await?);
+    // "G9VHN9P43" Horimiya: Missing Piecies (JP)
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQ244", "Horimiya (J)").await?);
 
+    // "GEXH3W2Z7" Reign of the Seven Spellblades (JP)
+    shows.push(get_info(crunchyroll.clone(), "GYGGCVQ9V", "Rot7Sb").await?);
 
-    // "" Reign of the Seven Spellblades
-    // Awaiting release
-
-    // "" The Gene of AI
-    // Awaiting release
+    // "G9VHN9Q9N" The Gene of AI (JP)
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQ2MW", "AI Gene").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
