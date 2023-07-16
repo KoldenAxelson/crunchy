@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G9VHN9P43").await?;
+    // let a = crunchyroll.media_from_id("G4PH0WJQZ").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -53,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G5PHNM7E2" Sugar Apple Fairy Tale  (JP)
     shows.push(get_info(crunchyroll.clone(), "GR8VCP4QX", "Sugar Apple (J)").await?);
 
-    // "G4PH0WJQZ" Fate Strange Fake 
+    // "G4PH0WJQZ" Fate Strange Fake (EN) / "GY19CP0WG" (JP)
     shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
     // "G9VHN9P43" Horimiya: Missing Piecies
