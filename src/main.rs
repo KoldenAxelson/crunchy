@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G9VHN9Q9N").await?;
+    // let a = crunchyroll.media_from_id("G9VHN9P43").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -56,8 +56,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G4PH0WJQZ" Fate Strange Fake 
     shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
-    // "G9VHN9P43" Horimiya: Missing Piecies (JP)
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQ244", "Horimiya (J)").await?);
+    // "G9VHN9P43" Horimiya: Missing Piecies
+    shows.push(get_info(crunchyroll.clone(), "G6MGC37V8", "").await?);
 
     // "GEXH3W2Z7" Reign of the Seven Spellblades (JP)
     shows.push(get_info(crunchyroll.clone(), "GYGGCVQ9V", "Rot7Sb").await?);
