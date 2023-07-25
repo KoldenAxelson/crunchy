@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G4PH0WJQZ").await?;
+    // let a = crunchyroll.media_from_id("G9VHN9Q9N").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -41,9 +41,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
     shows.push(get_info(crunchyroll.clone(), "GRK5CN0P7", "Demon Slayer").await?);
 
-    // "GYEXQKJG6" DR STONE
-    shows.push(get_info(crunchyroll.clone(), "G6E5CQ2QP", "Dr Stone").await?);
-
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
@@ -53,23 +50,24 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G5PHNM7E2" Sugar Apple Fairy Tale  (JP)
     shows.push(get_info(crunchyroll.clone(), "GR8VCP4QX", "Sugar Apple (J)").await?);
 
-    // "G4PH0WJQZ" Fate Strange Fake (EN) / "GY19CP0WG" (JP)
+    // "G4PH0WJQZ" Fate Strange Fake
     shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
     // "G9VHN9P43" Horimiya: Missing Piecies
     shows.push(get_info(crunchyroll.clone(), "G6MGC37V8", "").await?);
 
-    // "GEXH3W2Z7" Reign of the Seven Spellblades (JP)
-    shows.push(get_info(crunchyroll.clone(), "GYGGCVQ9V", "Rot7Sb").await?);
+    // "GEXH3W2Z7" Reign of the Seven Spellblades
+    shows.push(get_info(crunchyroll.clone(), "G6P8CX4Z3", "Rot7Sb").await?);
 
     // "G9VHN9Q9N" The Gene of AI (JP)
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQ2MW", "AI Gene").await?);
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQ2MW", "AI Gene (J)").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
     // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
     // "GVDHX8Q71" Why Raeliana Ended Up at the Duke's Mansion
     // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
+    // "GYEXQKJG6" DR STONE
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
