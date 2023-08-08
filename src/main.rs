@@ -38,20 +38,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G0XHWM52V" Sacrificial Princess and the King of Beasts
     shows.push(get_info(crunchyroll.clone(), "GYDQCGJ05", "Sacr. Princess").await?);
 
-    // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
-    shows.push(get_info(crunchyroll.clone(), "GRK5CN0P7", "Demon Slayer").await?);
-
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
     // "G5PHNM7E2" Sugar Apple Fairy Tale  
     shows.push(get_info(crunchyroll.clone(), "G6E5CQ482", "Sugar Apple").await?);
-
-    // "G5PHNM7E2" Sugar Apple Fairy Tale  (JP)
-    shows.push(get_info(crunchyroll.clone(), "GR8VCP4QX", "Sugar Apple (J)").await?);
-
-    // "G4PH0WJQZ" Fate Strange Fake
-    shows.push(get_info(crunchyroll.clone(), "GRJQC1G59", "Fate S Fake").await?);
 
     // "G9VHN9P43" Horimiya: Missing Piecies
     shows.push(get_info(crunchyroll.clone(), "G6MGC37V8", "").await?);
@@ -59,15 +50,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GEXH3W2Z7" Reign of the Seven Spellblades
     shows.push(get_info(crunchyroll.clone(), "G6P8CX4Z3", "Rot7Sb").await?);
 
-    // "G9VHN9Q9N" The Gene of AI (JP)
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQ2MW", "AI Gene (J)").await?);
-
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
     // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
     // "GVDHX8Q71" Why Raeliana Ended Up at the Duke's Mansion
     // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
     // "GYEXQKJG6" DR STONE
+    // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
