@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G9VHN9Q9N").await?;
+    // let a = crunchyroll.media_from_id("GVDHX8504").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -49,6 +49,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "GEXH3W2Z7" Reign of the Seven Spellblades
     shows.push(get_info(crunchyroll.clone(), "G6P8CX4Z3", "Rot7Sb").await?);
+
+    // "GVDHX8504" Reborn as a Vending Machine
+    shows.push(get_info(crunchyroll.clone(), "GRGGCVQZ9", "Reborn Vending").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
