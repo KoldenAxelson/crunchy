@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GVDHX8504").await?;
+    // let a = crunchyroll.media_from_id("G0XHWM0D3").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -60,6 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GNVHKNPQ7" My Love Story with Yamada-kun at Lv999
     // "GYEXQKJG6" DR STONE
     // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
+    // "G0XHWM0D3" Trapped in a Dating Sim! 
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
