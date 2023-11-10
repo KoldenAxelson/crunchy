@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("G0XHWM0D3").await?;
+    // let a = crunchyroll.media_from_id("GG5H5XQX4").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -35,23 +35,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut shows: Vec<Vec<String>> = Vec::new();
 
-    // "G0XHWM52V" Sacrificial Princess and the King of Beasts
-    shows.push(get_info(crunchyroll.clone(), "GYDQCGJ05", "Sacr. Princess").await?);
-
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
-    // "G5PHNM7E2" Sugar Apple Fairy Tale  
-    shows.push(get_info(crunchyroll.clone(), "G6E5CQ482", "Sugar Apple").await?);
-
-    // "G9VHN9P43" Horimiya: Missing Piecies
-    shows.push(get_info(crunchyroll.clone(), "G6MGC37V8", "").await?);
-
-    // "GEXH3W2Z7" Reign of the Seven Spellblades
-    shows.push(get_info(crunchyroll.clone(), "G6P8CX4Z3", "Rot7Sb").await?);
-
-    // "GVDHX8504" Reborn as a Vending Machine
-    shows.push(get_info(crunchyroll.clone(), "GRGGCVQZ9", "Reborn Vending").await?);
+    // "GG5H5XQX4" Frieren: Beyond Journey's End
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -61,6 +49,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GYEXQKJG6" DR STONE
     // "GY5P48XEY" Demon Slayer: Kimetsu no Yaiba
     // "G0XHWM0D3" Trapped in a Dating Sim! 
+    // "GVDHX8504" Reborn as a Vending Machine
+    // "GEXH3W2Z7" Reign of the Seven Spellblades
+    // "G9VHN9P43" Horimiya: Missing Piecies
+    // "G5PHNM7E2" Sugar Apple Fairy Tale 
+    // "G0XHWM52V" Sacrificial Princess and the King of Beasts
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
