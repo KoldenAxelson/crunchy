@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
 
     // "GG5H5XQX4" Frieren: Beyond Journey's End
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "").await?);
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "Frieren").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
