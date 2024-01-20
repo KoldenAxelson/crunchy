@@ -1,5 +1,5 @@
 use anyhow::Result;
-use crunchyroll_rs::{Crunchyroll, Media, Episode, Season};
+use crunchyroll_rs::{Crunchyroll, Episode, Season};
 use std::fs;
 
 #[tokio::main]
@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a = crunchyroll.media_from_id("GG5H5XQX4").await?;
+    // let a: Series = crunchyroll.media_from_id("G3KHEVDJ7").await?;
     // let b = a.seasons().await?;
     // for c in b {println!("{:?} {:?}", c.id, c.title);}
 
@@ -40,6 +40,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "GG5H5XQX4" Frieren: Beyond Journey's End
     shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "Frieren").await?);
+
+    // "G79H23Z8P" Shangri-La Frontier
+    shows.push(get_info(crunchyroll.clone(), "G6NQCJE0E", "Shangri-La").await?);
+
+    // "G3KHEVDJ7" Apothecary Diaries
+    //shows.push(get_info(crunchyroll.clone(), "GYP8CX7W5E", "Apothecary").await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -65,13 +71,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
-    let season: Media<Season> = cr.media_from_id(season_id).await?;
+    let season: Season = cr.media_from_id(season_id).await?;
     let episodes = season.episodes().await?;
-    let episode: &Media<Episode> = &episodes[episodes.len()-1];
+    let episode: &Episode = &episodes[episodes.len()-1];
 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
-    let time: i64 = sec - (episode.metadata.premium_available_date.timestamp_millis() as i64);
+    let time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
 
     let mut info_string: String = "".to_string();
 
@@ -97,17 +103,17 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
                 elapsed_mins));
     }
 
-    info_string.push_str(&format!("{} ",episode.metadata.premium_available_date.format("%a")));
+    info_string.push_str(&format!("{} ",episode.premium_available_date.format("%a")));
 
     if alt_title == "" {
-        info_string.push_str(&format!("{: <15}",episode.metadata.series_title));
+        info_string.push_str(&format!("{: <15}",episode.series_title));
     } else {
         info_string.push_str(&format!("{: <15}",alt_title));
     }
     info_string.push_str("  ");
 
-    info_string.push_str(&format!("S{:0>2}",episode.metadata.season_number));
-    info_string.push_str(&format!("E{:0>4}",episode.metadata.episode_number));
+    info_string.push_str(&format!("S{:0>2}",episode.season_number));
+    info_string.push_str(&format!("E{:0>4}",episode.sequence_number));
     info_string.push_str("  ");
 
     info_string.push_str(&format!("{:?}",episode.title));
