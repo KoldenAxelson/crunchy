@@ -19,7 +19,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Get Seasons
     // let a: Series = crunchyroll.media_from_id("G3KHEVDJ7").await?;
     // let b = a.seasons().await?;
-    // for c in b {println!("{:?} {:?}", c.id, c.title);}
+    // for mut c in b {
+    //     println!("{:?} Season {:?}",c.title,c.season_number);
+    //     let d = c.versions().await?;
+    //     for e in d {println!("{:?} {:?}", e.id, e.title);}
+    // }
 
     // Waiting for new Dr. Stone Seasons
     // let check_series = crunchyroll.media_from_id("GYEXQKJG6").await?;
@@ -36,16 +40,25 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut shows: Vec<Vec<String>> = Vec::new();
 
     // "GRMG8ZQZR" One Piece
-    shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "").await?);
+    shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", false).await?);
 
     // "GG5H5XQX4" Frieren: Beyond Journey's End
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "Frieren").await?);
+    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "Frieren", true).await?);
 
     // "G79H23Z8P" Shangri-La Frontier
-    shows.push(get_info(crunchyroll.clone(), "G6NQCJE0E", "Shangri-La").await?);
+    shows.push(get_info(crunchyroll.clone(), "G6NQCJE0E", "Shangri-La", true).await?);
 
     // "G3KHEVDJ7" Apothecary Diaries
-    //shows.push(get_info(crunchyroll.clone(), "GYP8CX7W5E", "Apothecary").await?);
+    shows.push(get_info(crunchyroll.clone(), "GR09CXPEK", "Apothecary", true).await?);
+
+    // "G0XHWM1EK" Wrong Way to Use Healing Magic
+    shows.push(get_info(crunchyroll.clone(), "G6P8CX74X", "Heal Magi", true).await?);
+
+    // "GDKHZEJ0K" Solo Leveling
+    shows.push(get_info(crunchyroll.clone(), "GR19CPDWM", "Solo Lv.", true).await?);
+
+    // "GEXH3W2V7" Sign of Affection
+    shows.push(get_info(crunchyroll.clone(), "GRWEC3XQV", "Sign oA", true).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -70,10 +83,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let season: Season = cr.media_from_id(season_id).await?;
     let episodes = season.episodes().await?;
-    let episode: &Episode = &episodes[episodes.len()-1];
+    let mut episode: &Episode = &episodes[episodes.len()-1];
+    if dub {
+        for n in 1..episodes.len() {
+            if episodes[episodes.len()-n].is_dubbed {
+                episode = &episodes[episodes.len()-n];
+                break;
+            }
+        }
+    }
 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
@@ -114,6 +135,9 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str) -> Result<V
 
     info_string.push_str(&format!("S{:0>2}",episode.season_number));
     info_string.push_str(&format!("E{:0>4}",episode.sequence_number));
+    info_string.push_str("  ");
+
+    info_string.push_str(&format!("{}", match dub {true => "EN", false => "JP"}));
     info_string.push_str("  ");
 
     info_string.push_str(&format!("{:?}",episode.title));
