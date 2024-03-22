@@ -86,6 +86,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let season: Season = cr.media_from_id(season_id).await?;
     let episodes = season.episodes().await?;
+    let release_episode: &Episode = &episodes[episodes.len()-1];
     let mut episode: &Episode = &episodes[episodes.len()-1];
     if dub {
         for n in 1..episodes.len() {
@@ -98,7 +99,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
-    let time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
+    let time: i64 = sec - (release_episode.premium_available_date.timestamp_millis() as i64);
 
     let mut info_string: String = "".to_string();
 
