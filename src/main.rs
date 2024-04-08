@@ -42,24 +42,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", false).await?);
 
-    // "GG5H5XQX4" Frieren: Beyond Journey's End
-    shows.push(get_info(crunchyroll.clone(), "GYE5CQM05", "Frieren", true).await?);
-
-    // "G79H23Z8P" Shangri-La Frontier
-    shows.push(get_info(crunchyroll.clone(), "G6NQCJE0E", "Shangri-La", true).await?);
-
-    // "G3KHEVDJ7" Apothecary Diaries
-    shows.push(get_info(crunchyroll.clone(), "GR09CXPEK", "Apothecary", true).await?);
-
-    // "G0XHWM1EK" Wrong Way to Use Healing Magic
-    shows.push(get_info(crunchyroll.clone(), "G6P8CX74X", "Heal Magi", true).await?);
-
-    // "GDKHZEJ0K" Solo Leveling
-    shows.push(get_info(crunchyroll.clone(), "GR19CPDWM", "Solo Lv.", true).await?);
-
-    // "GEXH3W2V7" Sign of Affection
-    shows.push(get_info(crunchyroll.clone(), "GRWEC3XQV", "Sign oA", true).await?);
-
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
     // "GDKHZEP8W" MASHLE: MAGIC AND MUSCLES
@@ -73,6 +55,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G9VHN9P43" Horimiya: Missing Piecies
     // "G5PHNM7E2" Sugar Apple Fairy Tale 
     // "G0XHWM52V" Sacrificial Princess and the King of Beasts
+    // "GEXH3W2V7" Sign of Affection
+    // "GDKHZEJ0K" Solo Leveling
+    // "G0XHWM1EK" Wrong Way to Use Healing Magic
+    // "G3KHEVDJ7" Apothecary Diaries
+    // "G79H23Z8P" Shangri-La Frontier
+    // "GG5H5XQX4" Frieren: Beyond Journey's End
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
