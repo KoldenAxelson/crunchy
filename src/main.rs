@@ -17,10 +17,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("G3KHEVDJ7").await?;
+    // let a: Series = crunchyroll.media_from_id("GP5HJ84QX").await?;
     // let b = a.seasons().await?;
     // for mut c in b {
-    //     println!("{:?} Season {:?}",c.title,c.season_number);
+    //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
     //     let d = c.versions().await?;
     //     for e in d {println!("{:?} {:?}", e.id, e.title);}
     // }
@@ -41,6 +41,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", false).await?);
+
+    // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
+    shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", false).await?);
+
+    // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
+    shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", false).await?);
+
+    // "GP5HJ84QX" A Condition Called Love G6P8CXPXZ
+    shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", false).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
