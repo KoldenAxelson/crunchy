@@ -44,12 +44,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
     shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", false).await?);
+    shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", true).await?);
 
     // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
     shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", false).await?);
+    shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
 
     // "GP5HJ84QX" A Condition Called Love G6P8CXPXZ
     shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", false).await?);
+    shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", true).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -74,6 +77,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
     for show in shows {
+        let show_check: bool = show[3].parse().unwrap();
+        if !show_check {continue;}
         println!("{}{}{}",show[2],show[1],"\x1b[0m");
     }
 
@@ -83,7 +88,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     let season: Season = cr.media_from_id(season_id).await?;
     let episodes = season.episodes().await?;
-    let release_episode: &Episode = &episodes[episodes.len()-1];
     let mut episode: &Episode = &episodes[episodes.len()-1];
     if dub {
         for n in 1..episodes.len() {
@@ -96,7 +100,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
-    let time: i64 = sec - (release_episode.premium_available_date.timestamp_millis() as i64);
+    let time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
 
     let mut info_string: String = "".to_string();
 
@@ -135,7 +139,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
     info_string.push_str(&format!("E{:0>4}",episode.sequence_number));
     info_string.push_str("  ");
 
-    info_string.push_str(&format!("{}", match dub {true => "EN", false => "JP"}));
+    info_string.push_str(&format!("{}", match episode.is_dubbed {true => "EN", false => "JP"}));
     info_string.push_str("  ");
 
     info_string.push_str(&format!("{:?}",episode.title));
@@ -160,7 +164,11 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
 
     let time_string: String = time.to_string();
 
-    let return_vec: Vec<String> = vec![time_string, info_string, color];
+    let dub_matched = (dub && episode.is_dubbed) || !dub;
+    let is_expired = remaining_days < -30;
+    let will_show = format!("{:?}",dub_matched && !is_expired);
+
+    let return_vec: Vec<String> = vec![time_string, info_string, color, will_show];
 
     Ok(return_vec)
 }
