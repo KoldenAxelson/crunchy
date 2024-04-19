@@ -44,14 +44,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
     shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", false).await?);
-    shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", true).await?);
 
     // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
     shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", false).await?);
-    shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
 
     // "GP5HJ84QX" A Condition Called Love G6P8CXPXZ
-    shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", false).await?);
     shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", true).await?);
 
     // Hiatus
@@ -91,8 +88,8 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
     let mut episode: &Episode = &episodes[episodes.len()-1];
     if dub {
         for n in 1..episodes.len() {
-            if episodes[episodes.len()-n].is_dubbed {
-                episode = &episodes[episodes.len()-n];
+            if episodes[n-1].is_dubbed {
+                episode = &episodes[n-1];
                 break;
             }
         }
@@ -100,7 +97,8 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
-    let time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
+    let mut time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
+    if dub {time -= 604_800_000 * 2;}
 
     let mut info_string: String = "".to_string();
 
