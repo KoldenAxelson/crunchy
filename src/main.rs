@@ -55,7 +55,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "G65VCDQZZ", "My Hero", true).await?);
 
     // "GYE5K3GQR" Konosuba
-    shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", false).await?);
+    shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", true).await?);
 
 
     // Hiatus
