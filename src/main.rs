@@ -25,6 +25,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     //     for e in d {println!("{:?} {:?}", e.id, e.title);}
     // }
 
+    // Episode Details from Season
+    // let a: Season = crunchyroll.media_from_id("GY2PCVE0G").await?;
+    // let b = a.episodes().await?;
+    // for c in b {
+    //     println!("{:?} {:?} {:?}", c.id, c.title, c.audio_locale);
+    // }
+
     // Waiting for new Dr. Stone Seasons
     // let check_series = crunchyroll.media_from_id("GYEXQKJG6").await?;
     // let check_seasons = check_series.seasons().await?;
@@ -49,7 +56,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
 
     // "GP5HJ84QX" A Condition Called Love G6P8CXPXZ
-    shows.push(get_info(crunchyroll.clone(), "G6P8CXPXZ", "Condition: Love", true).await?);
+    shows.push(get_info(crunchyroll.clone(), "GRDQCG50Z", "Condition: Love", true).await?);
 
     // "G6NQ5DWZ6" My Hero Academia
     shows.push(get_info(crunchyroll.clone(), "G65VCDQZZ", "My Hero", true).await?);
@@ -94,10 +101,9 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
     let episodes = season.episodes().await?;
     let mut episode: &Episode = &episodes[episodes.len()-1];
     if dub {
-        for n in 1..episodes.len() {
-            if episodes[n-1].is_dubbed {
-                episode = &episodes[n-1];
-                break;
+        for n in 0..episodes.len()-1 {
+            if format!("{:?}",episodes[n].audio_locale).eq("en_US") || episodes[n].is_dubbed {
+                episode = &episodes[n];
             }
         }
     }
@@ -105,7 +111,7 @@ async fn get_info(cr: Crunchyroll, season_id: &str, alt_title: &str, dub: bool) 
     let now       = std::time::SystemTime::now();
     let sec: i64  = (now.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() * 1000) as i64;
     let mut time: i64 = sec - (episode.premium_available_date.timestamp_millis() as i64);
-    if dub {time -= 604_800_000 * 2;}
+    if dub && !format!("{:?}",episode.audio_locale).eq("en_US") {time -= 604_800_000 * 2;}
 
     let mut info_string: String = "".to_string();
 
