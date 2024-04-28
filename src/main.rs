@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GYE5K3GQR").await?;
+    // let a: Series = crunchyroll.media_from_id("GJ0H7QGME").await?;
     // let b = a.seasons().await?;
     // for mut c in b {
     //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
@@ -64,6 +64,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GYE5K3GQR" Konosuba
     shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", true).await?);
 
+    // "GJ0H7QGME" Viral Hit
+    shows.push(get_info(crunchyroll.clone(), "G68VCPZNJ", "Viral Hit", true).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
