@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GJ0H7QGME").await?;
+    // let a: Series = crunchyroll.media_from_id("GG5H5XQ7D").await?;
     // let b = a.seasons().await?;
     // for mut c in b {
     //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
@@ -55,7 +55,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
     shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
 
-    // "GP5HJ84QX" A Condition Called Love G6P8CXPXZ
+    // "GP5HJ84QX" A Condition Called Love 
     shows.push(get_info(crunchyroll.clone(), "GRDQCG50Z", "Condition: Love", true).await?);
 
     // "G6NQ5DWZ6" My Hero Academia
@@ -66,6 +66,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // "GJ0H7QGME" Viral Hit
     shows.push(get_info(crunchyroll.clone(), "G68VCPZNJ", "Viral Hit", true).await?);
+
+    // "G3KHEVDPE" Wind Breaker 
+    shows.push(get_info(crunchyroll.clone(), "G6X0C458K", "Windbreaker", true).await?);
+
+    // "GG5H5XQ7D" Kaiju No. 8 
+    shows.push(get_info(crunchyroll.clone(), "GY5VCDQKW", "Kaiju #8", false).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
