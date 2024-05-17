@@ -6,7 +6,8 @@ use std::fs;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Can't Post my Login Credentials bc of Degens on the Internet
-    let credentials_file = fs::read_to_string("/Library/.my_credentials")?;
+    let read_to_string = fs::read_to_string("/Library/.my_credentials")?;
+    let credentials_file = read_to_string;
     let credentials : Vec<&str> = credentials_file.rsplit(",").collect();
 
     let crunchyroll = Crunchyroll::builder()
@@ -17,7 +18,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GG5H5XQ7D").await?;
+    // let a: Series = crunchyroll.media_from_id("G6NQ5DWZ6").await?;
     // let b = a.seasons().await?;
     // for mut c in b {
     //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
@@ -59,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GRDQCG50Z", "Condition: Love", true).await?);
 
     // "G6NQ5DWZ6" My Hero Academia
-    shows.push(get_info(crunchyroll.clone(), "G65VCDQZZ", "My Hero", true).await?);
+    shows.push(get_info(crunchyroll.clone(), "G6DQCG592", "My Hero", false).await?);
 
     // "GYE5K3GQR" Konosuba
     shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", true).await?);
