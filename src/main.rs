@@ -60,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GRDQCG50Z", "Condition: Love", true).await?);
 
     // "G6NQ5DWZ6" My Hero Academia
-    shows.push(get_info(crunchyroll.clone(), "G6DQCG592", "My Hero", false).await?);
+    shows.push(get_info(crunchyroll.clone(), "G6DQCG592", "My Hero", true).await?);
 
     // "GYE5K3GQR" Konosuba
     shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", true).await?);
