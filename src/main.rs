@@ -18,16 +18,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("G79H23G0D").await?;
+    // let a: Series = crunchyroll.media_from_id("GW4HM7WK9").await?;
     // let b = a.seasons().await?;
-    // for mut c in b {
+    // for c in b {
     //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
-    //     let d = c.versions().await?;
-    //     for e in d {println!("{:?} {:?}", e.id, e.title);}
+    //     let d = c.versions;
+    //     for e in d {println!("{:?} {:?}", e.id, e.audio_locale);}
     // }
 
     // Episode Details from Season
-    // let a: Season = crunchyroll.media_from_id("GY2PCVE0G").await?;
+    // let a: Season = crunchyroll.media_from_id("G649C7EGD").await?;
     // let b = a.episodes().await?;
     // for c in b {
     //     println!("{:?} {:?} {:?}", c.id, c.title, c.audio_locale);
@@ -50,29 +50,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", false).await?);
 
-    // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
-    shows.push(get_info(crunchyroll.clone(), "G6NQCJ9P1", "Mushoku Tensei", true).await?);
-
     // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
     shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
-
-    // "GP5HJ84QX" A Condition Called Love 
-    shows.push(get_info(crunchyroll.clone(), "GRDQCG50Z", "Condition: Love", true).await?);
 
     // "G6NQ5DWZ6" My Hero Academia
     shows.push(get_info(crunchyroll.clone(), "G6DQCG592", "My Hero", true).await?);
 
-    // "GYE5K3GQR" Konosuba
-    shows.push(get_info(crunchyroll.clone(), "GY2PCVE0G", "Konosuba", true).await?);
+    // "G1XHJV0XM" Alya Sometimes Hides Her Feelings in Russian
+    shows.push(get_info(crunchyroll.clone(), "GRGGCV88W", "Alya Hides", true).await?);
 
-    // "GJ0H7QGME" Viral Hit
-    shows.push(get_info(crunchyroll.clone(), "G68VCPZNJ", "Viral Hit", true).await?);
+    // "GDKHZEJ20" VTuber Legend: How I Went Viral after Forgetting to Turn Off My Stream
+    shows.push(get_info(crunchyroll.clone(), "G6Q4CZKJ8", "VTuber", true).await?);
 
-    // "G3KHEVDPE" Wind Breaker 
-    shows.push(get_info(crunchyroll.clone(), "G6X0C458K", "Windbreaker", true).await?);
-
-    // "GG5H5XQ7D" Kaiju No. 8 
-    shows.push(get_info(crunchyroll.clone(), "GY5VCDQKW", "Kaiju #8", false).await?);
+    // "GW4HM7WK9" Wistoria: Wand and Sword 
+    shows.push(get_info(crunchyroll.clone(), "GR2PCVEKV", "Wistoria", true).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -93,6 +84,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G3KHEVDJ7" Apothecary Diaries
     // "G79H23Z8P" Shangri-La Frontier
     // "GG5H5XQX4" Frieren: Beyond Journey's End
+    // "GYE5K3GQR" Konosuba
+    // "GJ0H7QGME" Viral Hit
+    // "G3KHEVDPE" Wind Breaker 
+    // "GG5H5XQ7D" Kaiju No. 8 
+    // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
+    // "GY243NN0R" The Misfit of Demon King Academy 
+    // "GP5HJ80VJ" How Heavy Are the Dumbbells You Lift? 
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
