@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GW4HM7WK9").await?;
+    // let a: Series = crunchyroll.media_from_id("GRMG8ZQZR").await?;
     // let b = a.seasons().await?;
     // for c in b {
     //     println!("{:?} Season {:?} | {:?}",c.title,c.season_number,c.id);
@@ -50,20 +50,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", false).await?);
 
-    // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
-    shows.push(get_info(crunchyroll.clone(), "GRZXCMZ37", "As a Slime", true).await?);
-
     // "G6NQ5DWZ6" My Hero Academia
     shows.push(get_info(crunchyroll.clone(), "G6DQCG592", "My Hero", true).await?);
 
-    // "G1XHJV0XM" Alya Sometimes Hides Her Feelings in Russian
-    shows.push(get_info(crunchyroll.clone(), "GRGGCV88W", "Alya Hides", true).await?);
+    // "G4PH0WEKE" BLUE LOCK
+    shows.push(get_info(crunchyroll.clone(), "G675CD9NG", "BLUE LOCK", true).await?);
 
-    // "GDKHZEJ20" VTuber Legend: How I Went Viral after Forgetting to Turn Off My Stream
-    shows.push(get_info(crunchyroll.clone(), "G6Q4CZKJ8", "VTuber", true).await?);
+    // "G6J0G49DR" Tower of God  
+    shows.push(get_info(crunchyroll.clone(), "G69PC28Q1", "Tower God", true).await?);
 
-    // "GW4HM7WK9" Wistoria: Wand and Sword 
-    shows.push(get_info(crunchyroll.clone(), "GR2PCVEKV", "Wistoria", true).await?);
+    // "GG5H5XQ0D" DAN DA DAN
+    shows.push(get_info(crunchyroll.clone(), "GYJQC1VNW", "DAN DA DAN", true).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -82,7 +79,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GDKHZEJ0K" Solo Leveling
     // "G0XHWM1EK" Wrong Way to Use Healing Magic
     // "G3KHEVDJ7" Apothecary Diaries
-    // "G79H23Z8P" Shangri-La Frontier
     // "GG5H5XQX4" Frieren: Beyond Journey's End
     // "GYE5K3GQR" Konosuba
     // "GJ0H7QGME" Viral Hit
@@ -91,6 +87,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G24H1N3MP" Mushoku Tensei: Jobless Reincarnation
     // "GY243NN0R" The Misfit of Demon King Academy 
     // "GP5HJ80VJ" How Heavy Are the Dumbbells You Lift? 
+    // "GW4HM7WK9" Wistoria: Wand and Sword 
+    // "GDKHZEJ20" VTuber Legend: How I Went Viral after Forgetting to Turn Off My Stream
+    // "G1XHJV0XM" Alya Sometimes Hides Her Feelings in Russian
+    // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
+    // "G79H23Z8P" Shangri-La Frontier !!!
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
