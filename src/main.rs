@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GG5H5XQG5").await?;
+    // let a: Series = crunchyroll.media_from_id("G6NQ5DWZ6").await?;
     // let b = a.seasons().await?;
     // for c in b {
     //     println!("{:?} Season {:?} | {:?}", c.title, c.season_number, c.id);
@@ -51,23 +51,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece
     shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", 0).await?);
 
-    // "GG5H5XQ0D" DAN DA DAN
-    shows.push(get_info(crunchyroll.clone(), "G6NQCJVPD", "DAN DA DAN", 0).await?);
-
-    // "GYEXQKJG6" DR STONE
-    shows.push(get_info(crunchyroll.clone(), "GR19CPMDD", "DR STONE", 0).await?);
-
-    // "GG5H5XQ7D" Kaiju No. 8
-    shows.push(get_info(crunchyroll.clone(), "G65VCD19G", "Kaiju #8", 0).await?);
-
-    // "GQWH0M1J3" To Be Hero X
-    shows.push(get_info(crunchyroll.clone(), "GRJQC1EN0", "2B Hero X", 0).await?);
-
-    // "G9VHN9Q3G" Secrets of the Silent Witch
-    shows.push(get_info(crunchyroll.clone(), "GR19CPGG5", "Silent Witch", 0).await?);
-
-    // "GG5H5XQG5" The Water Magician
-    shows.push(get_info(crunchyroll.clone(), "GY19CPGM0", "Water Mage", 2).await?);
+    // "G6NQ5DWZ6" My Hero Academia
+    shows.push(get_info(crunchyroll.clone(), "GYNQCJ207", "My Hero", 2).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -97,9 +82,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "G1XHJV0XM" Alya Sometimes Hides Her Feelings in Russian
     // "GYZJ43JMR" That Time I Got Reincarnated as a Slime
     // "G79H23Z8P" Shangri-La Frontier !!!
-    // "G6NQ5DWZ6" My Hero Academia
     // "G4PH0WEKE" BLUE LOCK
     // "G6J0G49DR" Tower of God
+    // "GG5H5XQG5" The Water Magician
+    // "G9VHN9Q3G" Secrets of the Silent Witch
+    // "GQWH0M1J3" To Be Hero X
+    // "GG5H5XQ7D" Kaiju No. 8
+    // "GYEXQKJG6" DR STONE
+    // "GG5H5XQ0D" DAN DA DAN
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
