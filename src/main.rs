@@ -48,11 +48,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut shows: Vec<Vec<String>> = Vec::new();
 
-    // "GRMG8ZQZR" One Piece
-    shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", 0).await?);
+    // "GRMG8ZQZR" One Piece - Priority Hiatus
+    // shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", 0).await?);
 
-    // "G6NQ5DWZ6" My Hero Academia
-    shows.push(get_info(crunchyroll.clone(), "GYNQCJ207", "My Hero", 2).await?);
+    println!("No Awaiting Anime..");
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -90,6 +89,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GG5H5XQ7D" Kaiju No. 8
     // "GYEXQKJG6" DR STONE
     // "GG5H5XQ0D" DAN DA DAN
+    // "G6NQ5DWZ6" My Hero Academia
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
