@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("G6NQ5DWZ6").await?;
+    // let a: Series = crunchyroll.media_from_id("GRDV0019R").await?;
     // let b = a.seasons().await?;
     // for c in b {
     //     println!("{:?} Season {:?} | {:?}", c.title, c.season_number, c.id);
@@ -51,7 +51,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GRMG8ZQZR" One Piece - Priority Hiatus
     // shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", 0).await?);
 
-    println!("No Awaiting Anime..");
+    // "GRDV0019R" Jujutsu Kaisen
+    shows.push(get_info(crunchyroll.clone(), "GS00365546JAJP", "", 0).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
