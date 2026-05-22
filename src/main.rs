@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("{:?}", token);
 
     // Get Seasons
-    // let a: Series = crunchyroll.media_from_id("GRDV0019R").await?;
+    // let a: Series = crunchyroll.media_from_id("GRMG8ZQZR").await?;
     // let b = a.seasons().await?;
     // for c in b {
     //     println!("{:?} Season {:?} | {:?}", c.title, c.season_number, c.id);
@@ -49,10 +49,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut shows: Vec<Vec<String>> = Vec::new();
 
     // "GRMG8ZQZR" One Piece - Priority Hiatus
-    // shows.push(get_info(crunchyroll.clone(), "GYP8PM4KY", "", 0).await?);
+    shows.push(get_info(crunchyroll.clone(), "GS00376439JAJP", "", 0).await?);
 
-    // "GRDV0019R" Jujutsu Kaisen
-    shows.push(get_info(crunchyroll.clone(), "GS00365546JAJP", "", 0).await?);
+    // "GT00371896" Kill Blue
+    shows.push(get_info(crunchyroll.clone(), "GS00371897ENUS", "", 0).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
@@ -91,6 +91,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // "GYEXQKJG6" DR STONE
     // "GG5H5XQ0D" DAN DA DAN
     // "G6NQ5DWZ6" My Hero Academia
+    // "GRDV0019R" Jujutsu Kaisen
 
     shows.sort_by_key(|show| show[0].parse::<u64>().unwrap());
 
