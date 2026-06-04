@@ -52,7 +52,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     shows.push(get_info(crunchyroll.clone(), "GS00376439JAJP", "", 0).await?);
 
     // "GT00371896" Kill Blue
-    shows.push(get_info(crunchyroll.clone(), "GS00371897ENUS", "", 2).await?);
+    // shows.push(get_info(crunchyroll.clone(), "GS00371897ENUS", "", 2).await?);
 
     // Hiatus
     // "GEXH3WKK0" Vinland Sage
